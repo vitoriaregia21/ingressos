@@ -2,7 +2,8 @@
 
 Projeto da disciplina **Fundamentos de Computação Concorrente, Paralela e Distribuída (FCCPD)** - CESAR School.
 
-DOCUMENTAÇÃO ARQUITETURA 
+DOCUMENTAÇÃO ARQUITETURA e DOCUMENTAÇÃO DO USO DA IA:
+https://drive.google.com/drive/folders/1AGvT_I1axotGDDgVN57LAH5KPqU83lJ7?usp=sharing
 
 Protótipo **single-node** de um sistema de venda de ingressos para shows de alta demanda (sem lugar marcado), com foco em **concorrência segura**: sem overselling e sem ingressos presos por compras abandonadas.
 
