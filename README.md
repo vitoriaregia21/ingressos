@@ -2,6 +2,8 @@
 
 Projeto da disciplina **Fundamentos de Computação Concorrente, Paralela e Distribuída (FCCPD)** - CESAR School.
 
+DOCUMENTAÇÃO ARQUITETURA 
+
 Protótipo **single-node** de um sistema de venda de ingressos para shows de alta demanda (sem lugar marcado), com foco em **concorrência segura**: sem overselling e sem ingressos presos por compras abandonadas.
 
 ## Arquitetura
@@ -52,5 +54,6 @@ O teste simula **100 clientes disputando 50 ingressos** ao mesmo tempo e verific
 - Idempotência de requisições.
 
 ## Equipe
+Tomás de Aquino, Fátima Beatriz, Vitória Régia, Felipe Menelau
 
-Menelau · Vitória Silva · Fátima Beatriz · Tomás
+Felipe Menelau · Fátima Beatriz · Tomás de Aquino · Vitória Silva
