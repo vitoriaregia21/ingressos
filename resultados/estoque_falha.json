@@ -1,0 +1,12 @@
+﻿{
+    "setores":  [
+                    {
+                        "setor":  "pista",
+                        "inicial":  50,
+                        "disponivel":  0,
+                        "reservado":  0,
+                        "vendido":  50
+                    }
+                ],
+    "invariante_ok":  true
+}

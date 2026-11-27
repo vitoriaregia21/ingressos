@@ -1,0 +1,8 @@
+{
+  "ingressos_gerados": 50,
+  "repeticoes": 5,
+  "processos": 4,
+  "tempo_sequencial_mediana_s": 3.4688,
+  "tempo_paralelo_mediana_s": 1.1958,
+  "speedup": 2.901
+}

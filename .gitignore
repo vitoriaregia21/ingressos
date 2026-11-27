@@ -1,0 +1,8 @@
+.env
+__pycache__/
+.pytest_cache/
+*.pyc
+*.csv
+!testes/modelo_resultados.csv
+saidas/
+testes/pedidos_falha.json

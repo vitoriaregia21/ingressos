@@ -1,0 +1,7 @@
+﻿NAME                              IMAGE                             COMMAND                  SERVICE               CREATED         STATUS                       PORTS
+ingressos-api-vendas-1            ingressos-api-vendas              "uvicorn service.appÔÇª"   api-vendas            2 minutes ago   Up 2 minutes                 0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+ingressos-db-1                    postgres:16-alpine                "docker-entrypoint.sÔÇª"   db                    2 minutes ago   Up 2 minutes (healthy)       5432/tcp
+ingressos-gerenciador-estoque-1   ingressos-gerenciador-estoque     "uvicorn service.estÔÇª"   gerenciador-estoque   2 minutes ago   Up 2 minutes                 
+ingressos-rabbitmq-1              rabbitmq:3.13-management-alpine   "docker-entrypoint.sÔÇª"   rabbitmq              2 minutes ago   Up 2 minutes (healthy)       127.0.0.1:15672->15672/tcp
+ingressos-worker-processador-1    ingressos-worker-processador      "python service/workÔÇª"   worker-processador    2 minutes ago   Exited (137) 2 minutes ago   
+ingressos-worker-processador-2    ingressos-worker-processador      "python service/workÔÇª"   worker-processador    2 minutes ago   Up 2 minutes                 

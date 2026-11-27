@@ -1,0 +1,53 @@
+ .env.example                            |   9 [32m+[m
+ .gitignore                              |  25 [32m+++[m
+ INICIO_RAPIDO_WINDOWS.md                | 113 [32m+++++++++++[m
+ Log_Uso_IA.md                           | 198 [32m+++++++++++++++++++[m
+ README.md                               | 258 [32m+++++++++++++++++++++[m[31m----[m
+ api-vendas/Dockerfile                   |   9 [32m+[m
+ api-vendas/app.py                       | 154 [32m+++++++++++++++[m
+ api-vendas/requirements.txt             |   4 [32m+[m
+ concorrencia.py                         | 326 [31m--------------------------------[m
+ docker-compose.yml                      |  76 [32m++++++++[m
+ fila_pedidos.py                         |  28 [31m---[m
+ gerenciador-estoque/Dockerfile          |   9 [32m+[m
+ gerenciador-estoque/estoque.py          | 146 [32m++++++++++++++[m
+ gerenciador-estoque/requirements.txt    |   3 [32m+[m
+ resultados/containers_falha.txt         |   7 [32m+[m
+ resultados/estoque_falha.json           |  12 [32m++[m
+ resultados/estoque_recuperacao.json     |  12 [32m++[m
+ resultados/logs_falha_worker.txt        | 192 [32m+++++++++++++++++++[m
+ resultados/logs_recuperacao.txt         |  42 [32m++++[m
+ resultados/outbox_recuperacao.txt       |   5 [32m+[m
+ resultados/paralelismo_qr.txt           | Bin [31m0[m -> [32m2384[m bytes
+ resultados/worker1_teste1.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker1_teste2.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker1_teste3.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker1_teste4.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker1_teste5.txt           | Bin [31m0[m -> [32m864[m bytes
+ resultados/worker2_teste1.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker2_teste2.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker2_teste3.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker2_teste4.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker2_teste5.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker4_teste1.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker4_teste2.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker4_teste3.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker4_teste4.txt           | Bin [31m0[m -> [32m862[m bytes
+ resultados/worker4_teste5.txt           | Bin [31m0[m -> [32m862[m bytes
+ saidas/benchmark_qr.json                |   8 [32m+[m
+ shared/__init__.py                      |   0
+ shared/db.py                            |   7 [32m+[m
+ shared/rabbit.py                        |  12 [32m++[m
+ shared/schema.sql                       |  36 [32m++++[m
+ testes/benchmark.py                     |  28 [32m+++[m
+ testes/benchmark_paralelo.py            |  55 [32m++++++[m
+ testes/modelo_resultados.csv            |   2 [32m+[m
+ testes/resultados_http.csv              |  17 [32m++[m
+ testes/teste_concorrencia.py            |  59 [32m++++++[m
+ testes/teste_falhas.py                  |  35 [32m++++[m
+ testes/teste_paralelismo.py             |  12 [32m++[m
+ worker-processador/Dockerfile           |   9 [32m+[m
+ worker-processador/geracao_ingressos.py |  86 [32m+++++++++[m
+ worker-processador/requirements.txt     |   4 [32m+[m
+ worker-processador/worker.py            |  80 [32m++++++++[m
+ 52 files changed, 1685 insertions(+), 393 deletions(-)

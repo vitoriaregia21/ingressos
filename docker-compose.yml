@@ -1,0 +1,76 @@
+name: ingressos
+x-service-env: &service-env
+  DATABASE_URL: postgresql://${POSTGRES_USER:-ingressos}:${POSTGRES_PASSWORD:-ingressos}@db:5432/${POSTGRES_DB:-ingressos}
+  RABBITMQ_URL: amqp://${RABBITMQ_USER:-ingressos}:${RABBITMQ_PASSWORD:-ingressos}@rabbitmq:5672/%2F
+  INTERNAL_TOKEN: ${INTERNAL_TOKEN:-dev-internal-token}
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-ingressos}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ingressos}
+      POSTGRES_DB: ${POSTGRES_DB:-ingressos}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./shared/schema.sql:/docker-entrypoint-initdb.d/001-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ingressos} -d ${POSTGRES_DB:-ingressos}"]
+      interval: 3s
+      timeout: 3s
+      retries: 25
+    restart: unless-stopped
+  rabbitmq:
+    image: rabbitmq:3.13-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-ingressos}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-ingressos}
+    ports:
+      - "127.0.0.1:15672:15672"
+    volumes:
+      - rabbitdata:/var/lib/rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 6s
+      retries: 20
+    restart: unless-stopped
+  gerenciador-estoque:
+    build:
+      context: .
+      dockerfile: gerenciador-estoque/Dockerfile
+    environment:
+      <<: *service-env
+      RESERVATION_TTL_SECONDS: ${RESERVATION_TTL_SECONDS:-180}
+    depends_on:
+      db: {condition: service_healthy}
+    restart: unless-stopped
+  api-vendas:
+    build:
+      context: .
+      dockerfile: api-vendas/Dockerfile
+    environment: *service-env
+    ports:
+      - "8000:8000"
+    depends_on:
+      db: {condition: service_healthy}
+      rabbitmq: {condition: service_healthy}
+    restart: unless-stopped
+  worker-processador:
+    build:
+      context: .
+      dockerfile: worker-processador/Dockerfile
+    environment:
+      <<: *service-env
+      STOCK_URL: http://gerenciador-estoque:8001
+      PAYMENT_DELAY_SECONDS: ${PAYMENT_DELAY_SECONDS:-0.04}
+    depends_on:
+      rabbitmq: {condition: service_healthy}
+      gerenciador-estoque: {condition: service_started}
+    volumes:
+      - ./saidas:/app/saidas
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  rabbitdata:
